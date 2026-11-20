@@ -22,3 +22,4 @@ O objetivo da atividade foi completar um sistema bancário já iniciado, impleme
 - **JavaScript:** lógica das operações e validações.
 
 Alunos: Nicollas Neves e Luciane Canatto
+(Readme feito apenas para pequenas orientações)
