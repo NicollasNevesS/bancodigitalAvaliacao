@@ -331,8 +331,24 @@ function depositar() {
     const campo = document.getElementById('valorDeposito');
     const valor = Number(campo.value); 
 
-    if (campo.value.trim() === '' || !Number.isFinite(valor) || valor <= 0) {
-        exibirMensagem('msg-movimentacao', 'Digite um valor válido!', 'erro');
+    // Verifica se o valor informado é inválido
+    if (campo.validity.badInput || !Number.isFinite(valor)) {
+        exibirMensagem('msg-movimentacao', 'Digite apenas números!', 'erro');
+        return;
+    }
+
+    if (campo.value.trim() === '') {
+        exibirMensagem('msg-movimentacao', 'Informe um valor para depositar!', 'erro');
+        return;
+    }
+
+    if (valor === 0) {
+        exibirMensagem('msg-movimentacao', 'O depósito não pode ser de R$ 0,00!', 'erro');
+        return;
+    }
+
+    if (valor < 0) {
+        exibirMensagem('msg-movimentacao', 'Não é permitido depositar valores negativos!', 'erro');
         return;
     }
 
@@ -366,8 +382,24 @@ function sacar() {
     const campo = document.getElementById('valorSaque');
     const valor = Number(campo.value);
 
-    if(campo.value.trim() === '' || !Number.isFinite(valor) || valor <= 0) {
-        exibirMensagem('msg-movimentacao', 'Digite um valor válido!', 'erro');
+
+    if (campo.validity.badInput || !Number.isFinite(valor)) {
+        exibirMensagem('msg-movimentacao', 'Digite apenas números!', 'erro');
+        return;
+    }
+
+    if (campo.value.trim() === '') {
+        exibirMensagem('msg-movimentacao', 'Informe um valor para sacar!', 'erro');
+        return;
+    }
+
+    if (valor === 0) {
+        exibirMensagem('msg-movimentacao', 'O saque não pode ser de R$ 0,00!', 'erro');
+        return;
+    }
+
+    if (valor < 0) {
+        exibirMensagem('msg-movimentacao', 'Não é permitido sacar valores negativos!', 'erro');
         return;
     }
 
@@ -411,8 +443,23 @@ function transferir() {
     const numeroOrigem = document.getElementById('selectOrigem').value;
     const numeroDestino = document.getElementById('selectDestino').value;
 
-    if(campo.value.trim() === '' || !Number.isFinite(valor) || valor <= 0) {
-        exibirMensagem('msg-transferencia', 'Digite um valor válido!', 'erro');
+    if (campo.validity.badInput || !Number.isFinite(valor)) {
+        exibirMensagem('msg-transferencia', 'Digite apenas números!', 'erro');
+        return;
+    }
+
+    if (campo.value.trim() === '') {
+        exibirMensagem('msg-transferencia', 'Informe um valor para transferir!', 'erro');
+        return;
+    }
+
+    if (valor === 0) {
+        exibirMensagem('msg-transferencia', 'A transferência não pode ser de R$ 0,00!', 'erro');
+        return;
+    }
+
+    if (valor < 0) {
+        exibirMensagem('msg-transferencia', 'Não é permitido transferir valores negativos!', 'erro');
         return;
     }
 
